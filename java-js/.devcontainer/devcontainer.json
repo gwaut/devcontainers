@@ -1,0 +1,58 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+	"name": "java-js",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu26.04",
+    "features": {
+	    "ghcr.io/devcontainers/features/common-utils:2.6.0": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:4.1.1": {
+            "version": "latest",
+		    "moby": false
+        },
+	    "ghcr.io/devcontainers/features/java:1.8.3": {
+		    "version": "25.0.4-tem",
+		    "installMaven": "true",
+		    "mavenVersion": "3.9.16"
+	    },
+		"ghcr.io/gwaut/devcontainers-features/volta:0.0.2": {
+			 "node-version": "v26"
+		},
+        "ghcr.io/gwaut/devcontainers-features/pi-coding-agent:latest": {},
+		"ghcr.io/devcontainers/features/copilot-cli:1": {}
+   },
+
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	
+	// "customizations": {
+	//   "vscode": {
+	//     "extensions": [
+	//       "GitHub.copilot",
+	//       "GitHub.copilot-chat"
+	//     ]
+	//   }
+	// },
+				
+	// Share your local Pi settings, models, and sessions with the container
+	// "mounts": [
+	//   "source=${localEnv:HOME}/.pi/agent,target=/home/vscode/.pi/agent,type=bind,consistency=cached"
+	// ],
+					
+	"runArgs": [
+		"--add-host=host.docker.internal:host-gateway"
+	],
+		
+	// Pass the gateway address to the Pi agent inside the container
+	"containerEnv": {
+		"HOST_GATEWAY": "host.docker.internal",
+		"TZ": "Europe/Brussels"
+	},
+				
+	"remoteUser": "vscode",
+	"updateRemoteUserUID": true,
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.pi"
+}
+
