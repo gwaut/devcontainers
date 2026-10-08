@@ -20,7 +20,8 @@
 			 "node-version": "v26"
 		},
         "ghcr.io/gwaut/devcontainers-features/pi-coding-agent:latest": {},
-		"ghcr.io/devcontainers/features/copilot-cli:1": {}
+		"ghcr.io/devcontainers/features/copilot-cli:1": {},
+		"ghcr.io/gwaut/devcontainers-features/uv:latest": {}
    },
 
 
