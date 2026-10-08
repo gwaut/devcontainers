@@ -57,5 +57,5 @@
 	"remoteUser": "vscode",
 	"updateRemoteUserUID": true,
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.pi"
+	"postCreateCommand": "if [ ! -d \"$HOME/.bash-git-prompt/.git\" ]; then git clone --depth 1 https://github.com/magicmonty/bash-git-prompt \"$HOME/.bash-git-prompt\" || exit $?; fi\nif ! grep -Fqx 'source \"$HOME/.bash-git-prompt/gitprompt.sh\"' \"$HOME/.bashrc\"; then printf '\\nsource \"$HOME/.bash-git-prompt/gitprompt.sh\"\\n' >> \"$HOME/.bashrc\"; fi\nsudo chown -R vscode:vscode /home/vscode/.pi"
 }
